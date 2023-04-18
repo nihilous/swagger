@@ -1,0 +1,693 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation",
+        "description": "API documentation for the application",
+        "contact": {
+            "email": "dkfg123@gmail.com"
+        },
+        "license": {
+            "name": "nginx",
+            "url": "http://local-host setup whatever.co.kr/"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/garageinfo/get/byownerid/{ig_owner_id}": {
+            "get": {
+                "tags": [
+                    "get garage info by ig owner id"
+                ],
+                "summary": "Find garages with a specific owner ID",
+                "description": "Returns a list of garages with the specified owner ID",
+                "operationId": "getInfoByIgOwnerId",
+                "parameters": [
+                    {
+                        "name": "ig_owner_id",
+                        "in": "path",
+                        "description": "Owner ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "garages": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "garage_id": {
+                                                        "type": "integer",
+                                                        "example": 50786421
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Garage 1"
+                                                    },
+                                                    "hourly_price": {
+                                                        "type": "number",
+                                                        "example": 2
+                                                    },
+                                                    "currency": {
+                                                        "type": "string",
+                                                        "example": "€"
+                                                    },
+                                                    "contact_email": {
+                                                        "type": "string",
+                                                        "example": "testemail@testautopark.fi"
+                                                    },
+                                                    "point": {
+                                                        "type": "string",
+                                                        "example": "60.168607847624095 24.932371066131623"
+                                                    },
+                                                    "country": {
+                                                        "type": "string",
+                                                        "example": "Finland"
+                                                    },
+                                                    "owner_id": {
+                                                        "type": "integer",
+                                                        "example": 29190
+                                                    },
+                                                    "garage_owner": {
+                                                        "type": "string",
+                                                        "example": "AutoPark"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "status_code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "api_endpoint": {
+                                            "type": "string",
+                                            "example": "/api/garageinfo/get/byownerid/29190"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/garageinfo/get/byownercountry/{ioc_country}": {
+            "get": {
+                "tags": [
+                    "get garage info by ig owner country"
+                ],
+                "summary": "Find garages with a specific owner country code",
+                "description": "Returns a list of garages with the specified owner ID",
+                "operationId": "getInfoByIgOwnerCountry",
+                "parameters": [
+                    {
+                        "name": "ioc_country",
+                        "in": "path",
+                        "description": "Owner Country (0: Finland, 1: Sweden, 2: Norway, 3: Denmark, 4: UK, 5: France, 6: USA, 7: Korea, 8: Japan, 9: China)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "enum": [
+                                0,
+                                1,
+                                2,
+                                3,
+                                4,
+                                5,
+                                6,
+                                7,
+                                8,
+                                9
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "garages": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "garage_id": {
+                                                        "type": "integer",
+                                                        "example": 50786421
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Garage 1"
+                                                    },
+                                                    "hourly_price": {
+                                                        "type": "number",
+                                                        "example": 2
+                                                    },
+                                                    "currency": {
+                                                        "type": "string",
+                                                        "example": "€"
+                                                    },
+                                                    "contact_email": {
+                                                        "type": "string",
+                                                        "example": "testemail@testautopark.fi"
+                                                    },
+                                                    "point": {
+                                                        "type": "string",
+                                                        "example": "60.168607847624095 24.932371066131623"
+                                                    },
+                                                    "country": {
+                                                        "type": "string",
+                                                        "example": "Finland"
+                                                    },
+                                                    "owner_id": {
+                                                        "type": "integer",
+                                                        "example": 29190
+                                                    },
+                                                    "garage_owner": {
+                                                        "type": "string",
+                                                        "example": "AutoPark"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "status_code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "api_endpoint": {
+                                            "type": "string",
+                                            "example": "/api/garageinfo/get/byownerid/29190"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/garageinfo/get/byclientlocation/{standard_of_distance}/{distance_range}": {
+            "get": {
+                "tags": [
+                    "get garage info by client location"
+                ],
+                "summary": "Find garages within a specified distance range of a client's location",
+                "description": "Returns a list of garages that are within the specified distance range of the client's location",
+                "operationId": "getInfoByClientLocation",
+                "parameters": [
+                    {
+                        "name": "standard_of_distance",
+                        "in": "path",
+                        "description": "Standard of distance ('m' for meter or 'km' for kilometer)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "m",
+                                "km"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "distance_range",
+                        "in": "path",
+                        "description": "Distance range",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Client latitude",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Client longitude",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "garages": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "garage_id": {
+                                                        "type": "integer",
+                                                        "example": 50786421
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Garage 1"
+                                                    },
+                                                    "hourly_price": {
+                                                        "type": "number",
+                                                        "example": 2
+                                                    },
+                                                    "currency": {
+                                                        "type": "string",
+                                                        "example": "€"
+                                                    },
+                                                    "contact_email": {
+                                                        "type": "string",
+                                                        "example": "testemail@testautopark.fi"
+                                                    },
+                                                    "point": {
+                                                        "type": "string",
+                                                        "example": "60.168607847624095 24.932371066131623"
+                                                    },
+                                                    "country": {
+                                                        "type": "string",
+                                                        "example": "Finland"
+                                                    },
+                                                    "owner_id": {
+                                                        "type": "integer",
+                                                        "example": 29190
+                                                    },
+                                                    "garage_owner": {
+                                                        "type": "string",
+                                                        "example": "AutoPark"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "status_code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "api_endpoint": {
+                                            "type": "string",
+                                            "example": "/api/garageinfo/get/byclientlocation/m || km/150?latitude=15.123456&longitude=15.123421"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/garageinfo/get/lowerthan/{country}/{cost}": {
+            "get": {
+                "tags": [
+                    "findlowerthan"
+                ],
+                "summary": "find parking spot has lower cost than {cost} within {country}",
+                "description": "{country} code and {cost}",
+                "operationId": "findlowerthan",
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "path",
+                        "description": "Currency Type (0: Euro, 1: Dollar, 2: Swedish Krona, 3: Norwegian Krone, 4: Danish Krone, 5: Pound, 6: French Franc, 7: Korean Won, 8: Japanese Yen, 9: Chinese Yuan)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "enum": [
+                                0,
+                                1,
+                                2,
+                                3,
+                                4,
+                                5,
+                                6,
+                                7,
+                                8,
+                                9
+                            ]
+                        }
+                    },
+                    {
+                        "name": "cost",
+                        "in": "path",
+                        "description": "Maximum Cost Limit",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "ig_garage_name": {
+                                                        "type": "string"
+                                                    },
+                                                    "ig_hourly_price": {
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/garageinfo/get/all/{ig_no}": {
+            "get": {
+                "tags": [
+                    "Garage Info"
+                ],
+                "summary": "Get information about a parking garage",
+                "description": "Retrieve information about a parking garage based on its ID",
+                "operationId": "getInfoGarage",
+                "parameters": [
+                    {
+                        "name": "ig_no",
+                        "in": "path",
+                        "description": "ID of the parking garage to retrieve information for",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "ig_no": {
+                                            "description": "ID of the parking garage",
+                                            "type": "integer"
+                                        },
+                                        "ig_hourly_price": {
+                                            "description": "Standard price for an hour of parking",
+                                            "type": "integer"
+                                        },
+                                        "ig_currency_type": {
+                                            "description": "Local currency type of the parking garage",
+                                            "type": "integer"
+                                        },
+                                        "ig_coordinate": {
+                                            "description": "Spatial data for the parking garage",
+                                            "properties": {
+                                                "x": {
+                                                    "description": "X-coordinate",
+                                                    "type": "number",
+                                                    "format": "float"
+                                                },
+                                                "y": {
+                                                    "description": "Y-coordinate",
+                                                    "type": "number",
+                                                    "format": "float"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "ig_owner_id": {
+                                            "description": "ID of the owner of the parking garage",
+                                            "type": "integer"
+                                        },
+                                        "ig_garage_name": {
+                                            "description": "Name of the parking garage",
+                                            "type": "string"
+                                        },
+                                        "ig_reserved_until": {
+                                            "description": "Date and time until the parking garage is reserved (if it is currently reserved)",
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "nullable": true
+                                        },
+                                        "ig_rental_id": {
+                                            "description": "ID of the rental client that reserved the parking garage (if it is currently reserved)",
+                                            "type": "integer",
+                                            "nullable": true
+                                        },
+                                        "ig_created_at": {
+                                            "description": "Timestamp of when the parking garage was created",
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "ig_updated_at": {
+                                            "description": "Timestamp of when the parking garage was last updated",
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "nullable": true
+                                        },
+                                        "ig_editor_employee": {
+                                            "description": "ID of the employee that last edited the parking garage (if it has been edited)",
+                                            "type": "integer",
+                                            "nullable": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Garage info not found"
+                    }
+                }
+            }
+        },
+        "/api/garageinfo/update/reserve/{ig_no}/{ig_rental_id}/{timestandard}/{number}": {
+            "post": {
+                "tags": [
+                    "Garage Info"
+                ],
+                "summary": "Reserve a parking garage",
+                "description": "Reserve a parking garage by updating ig_reserved_until and ig_rental_id fields of the given garage",
+                "operationId": "reserveGarage",
+                "parameters": [
+                    {
+                        "name": "ig_no",
+                        "in": "path",
+                        "description": "The id of the parking garage to reserve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "ig_rental_id",
+                        "in": "path",
+                        "description": "The id of the rental client to reserve the garage for",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "timestandard",
+                        "in": "path",
+                        "description": "The time standard to use for the reservation (m: minutes, h: hours, d: days)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "m",
+                                "h",
+                                "d"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "number",
+                        "in": "path",
+                        "description": "The number of time units to reserve the garage for",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "ig_no": {
+                                                    "description": "The id of the reserved parking garage",
+                                                    "type": "integer"
+                                                },
+                                                "ig_reserved_until": {
+                                                    "description": "The date and time until which the parking garage is reserved",
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error message",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "The error message",
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "description": "Validation errors",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
